@@ -1,16 +1,33 @@
 "use client";
 
-import { useState, useRef } from "react";
-import { Play, X, Shield, Settings, Heart, CheckCircle2 } from "lucide-react";
+import { useState, useRef, useEffect } from "react";
+import { Play, X, Shield, Settings, Heart, CheckCircle2, Volume2, VolumeX, MessageCircle, Share2, MapPin } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import styles from "./QualityShowcase.module.css";
 
 export default function QualityShowcase() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
+  const [isLiked, setIsLiked] = useState(false);
+  const [likeCount, setLikeCount] = useState(148);
   const videoRef = useRef(null);
 
   const openModal = () => setIsOpen(true);
   const closeModal = () => setIsOpen(false);
+
+  const toggleMute = (e) => {
+    e.stopPropagation();
+    if (videoRef.current) {
+      videoRef.current.muted = !videoRef.current.muted;
+      setIsMuted(videoRef.current.muted);
+    }
+  };
+
+  const handleLike = (e) => {
+    e.stopPropagation();
+    setIsLiked(!isLiked);
+    setLikeCount((prev) => (isLiked ? prev - 1 : prev + 1));
+  };
 
   const QUALITY_POINTS = [
     {
@@ -33,32 +50,92 @@ export default function QualityShowcase() {
   return (
     <section id="calidad" className={styles.section}>
       <div className={styles.grid}>
-        {/* Left Column: Interactive Video Showcase */}
-        <div className={styles.videoWrapper}>
-          {/* Autoplaying background video preview */}
-          <video
-            ref={videoRef}
-            className={styles.videoElement}
-            src="https://assets.mixkit.co/videos/preview/mixkit-sewing-machine-stitching-a-leather-piece-41718-large.mp4"
-            autoPlay
-            loop
-            muted
-            playsInline
-          />
-          <div className={styles.videoOverlay}>
-            <span className={styles.videoTag}>En Acción</span>
-            <h4 className={styles.videoTitle}>Proceso de Costura Premium</h4>
-            <p className={styles.videoDesc}>Mira cómo confeccionamos cada panel a mano con precisión milimétrica.</p>
-          </div>
+        {/* Left Column: Interactive Mobile Reel Showcase */}
+        <div className={styles.phoneContainer}>
+          {/* Smartphone Frame Outer Wrapper */}
+          <div className={styles.phoneFrame}>
+            <div className={styles.phoneSpeaker} />
+            <div className={styles.phoneInnerScreen}>
+              {/* Autoplaying background video preview */}
+              <video
+                ref={videoRef}
+                className={styles.videoElement}
+                src="https://assets.mixkit.co/videos/preview/mixkit-sewing-machine-stitching-a-leather-piece-41718-large.mp4"
+                autoPlay
+                loop
+                muted={isMuted}
+                playsInline
+              />
 
-          {/* Floating Play Button */}
-          <button 
-            className={styles.playBtn} 
-            onClick={openModal}
-            aria-label="Reproducir video de calidad a pantalla completa"
-          >
-            <Play size={28} fill="white" />
-          </button>
+              {/* Phone Status Bar */}
+              <div className={styles.phoneStatusBar}>
+                <span className={styles.statusTime}>12:30</span>
+                <div className={styles.statusIcons}>
+                  <div className={styles.wifiIcon} />
+                  <div className={styles.signalIcon} />
+                  <div className={styles.batteryIcon} />
+                </div>
+              </div>
+
+              {/* Blinking Live Indicator */}
+              <div className={styles.liveTag}>
+                <span className={styles.liveDot} />
+                <span>EN VIVO - JR. MARISCAL CÁCERES 1031</span>
+              </div>
+
+              {/* Side Interaction Icons (TikTok/Instagram style) */}
+              <div className={styles.sideActions}>
+                <button 
+                  className={`${styles.actionBtn} ${isLiked ? styles.actionLiked : ""}`}
+                  onClick={handleLike}
+                  aria-label="Dar me gusta"
+                >
+                  <Heart size={22} fill={isLiked ? "#dc2626" : "none"} />
+                  <span className={styles.actionCount}>{likeCount}</span>
+                </button>
+                <button className={styles.actionBtn} aria-label="Comentarios">
+                  <MessageCircle size={22} />
+                  <span className={styles.actionCount}>24</span>
+                </button>
+                <button className={styles.actionBtn} aria-label="Compartir">
+                  <Share2 size={22} />
+                  <span className={styles.actionCount}>Compartir</span>
+                </button>
+              </div>
+
+              {/* Volume Controller Mute/Unmute */}
+              <button 
+                className={styles.volumeBtn} 
+                onClick={toggleMute}
+                aria-label={isMuted ? "Activar sonido" : "Silenciar"}
+              >
+                {isMuted ? <VolumeX size={18} /> : <Volume2 size={18} />}
+              </button>
+
+              {/* Reel Info / Caption */}
+              <div className={styles.videoOverlay}>
+                <h5 className={styles.videoAuthor}>@tapimaster.cajamarca</h5>
+                <p className={styles.videoDesc}>
+                  El maestro tapicero cosiendo un panel lateral en cuero para una pick-up Hilux. ¡Precisión milimétrica hecha a mano! 🛠️💪
+                </p>
+                <div className={styles.videoHashtags}>
+                  <span>#tapiceria</span>
+                  <span>#cajamarca</span>
+                  <span>#hechoamano</span>
+                </div>
+              </div>
+
+              {/* Floating Fullscreen Trigger Button */}
+              <button 
+                className={styles.playBtn} 
+                onClick={openModal}
+                aria-label="Reproducir video de calidad a pantalla completa"
+              >
+                <Play size={22} fill="white" />
+              </button>
+            </div>
+          </div>
+          <span className={styles.reelFootnote}>💡 Haz clic en el ícono de reproducción para pantalla completa, o usa el ícono de audio para escuchar el taller.</span>
         </div>
 
         {/* Right Column: Narrative details */}
@@ -66,7 +143,7 @@ export default function QualityShowcase() {
           <span className={styles.subtitle}>Saber Hacer & Calidad</span>
           <h2 className={styles.title}>¿Por qué elegir nuestro trabajo?</h2>
           <p className={styles.introText}>
-            En Cajamarca, nos distinguimos por el cuidado de los detalles. La diferencia entre un tapizado común y uno premium radica en la preparación y el acabado artesanal.
+            En Cajamarca, nos distinguimos por el cuidado de los detalles. La diferencia entre un tapizado común y uno premium radica en la preparación y el acabado artesanal de nuestros maestros tapiceros.
           </p>
 
           <div className={styles.featuresGrid}>
@@ -115,17 +192,16 @@ export default function QualityShowcase() {
                 <span>Cerrar</span>
               </button>
 
-              {/* Full screen video loop / larger size */}
-              <iframe
-                width="100%"
-                height="100%"
-                src="https://www.youtube.com/embed/5a2W6O4R778?autoplay=1&mute=1&loop=1&playlist=5a2W6O4R778"
-                title="Tapicería Automotriz - Proceso de costura"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-                style={{ border: "none" }}
-              />
+              {/* Full screen vertical video player */}
+              <div className={styles.modalPlayerWrapper}>
+                <video
+                  className={styles.modalVideo}
+                  src="https://assets.mixkit.co/videos/preview/mixkit-sewing-machine-stitching-a-leather-piece-41718-large.mp4"
+                  autoPlay
+                  controls
+                  loop
+                />
+              </div>
             </motion.div>
           </motion.div>
         )}

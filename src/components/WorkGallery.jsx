@@ -1,63 +1,50 @@
 "use client";
 
 import { useState } from "react";
-import { X, ChevronLeft, ChevronRight, Maximize2 } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { X, ChevronLeft, ChevronRight } from "lucide-react";
+import { motion as framerMotion, AnimatePresence as FramerAnimatePresence } from "framer-motion";
 import styles from "./WorkGallery.module.css";
+import BeforeAfterSlider from "./BeforeAfterSlider";
 
 const GALLERY_ITEMS = [
   {
     id: 1,
-    image: "/images/downloads/AdobeStock_1134428926.jpeg",
+    image: "/images/real/trabajo1_asiento_hilux.png",
     category: "asientos",
-    title: "Butacas Deportivas Diamond Stitch",
+    title: "Butacas de Hilux Double Stitch",
     material: "Cuero Americano Premium",
   },
   {
     id: 2,
-    image: "/images/downloads/AdobeStock_1453597035_Editorial_Use_Only.jpeg",
+    image: "/images/real/trabajo2_asiento_accent.png",
     category: "asientos",
-    title: "Cabina Ejecutiva Genuina",
-    material: "Cuero Natural de Importación",
-  },
-  {
-    id: 3,
-    image: "/images/downloads/AdobeStock_1720048693.jpeg",
-    category: "puertas",
-    title: "Paneles Laterales de Puerta",
+    title: "Butacas Deportivas Accent",
     material: "Tacto Cuero Americano",
   },
   {
-    id: 4,
-    image: "/images/downloads/AdobeStock_1740380285_Editorial_Use_Only.jpeg",
+    id: 3,
+    image: "/images/real/trabajo3_volante_rio.png",
     category: "volantes",
-    title: "Volante Deportivo con Costura Cruzada",
-    material: "Cuero Natural Microperforado",
+    title: "Volante Cosido a Mano",
+    material: "Cuero Natural Genuino",
   },
   {
-    id: 5,
-    image: "/images/downloads/AdobeStock_2038520273.jpeg",
-    category: "asientos",
-    title: "Asiento Confort Reconstruido",
-    material: "Cuero Americano Mate",
-  },
-  {
-    id: 6,
-    image: "/images/downloads/AdobeStock_2040182756.jpeg",
-    category: "asientos",
-    title: "Butacas con Costuras Rojas",
-    material: "Tacto Cuero Negro",
-  },
-  {
-    id: 7,
-    image: "/images/downloads/AdobeStock_2043987453.jpeg",
-    category: "consolas",
-    title: "Consola Central y Fuelle de Cambios",
+    id: 4,
+    image: "/images/real/trabajo4_puerta_pranna.png",
+    category: "puertas",
+    title: "Paneles Laterales de Puertas",
     material: "Pranna Sintético Reforzado",
   },
   {
-    id: 8,
-    image: "/images/downloads/AdobeStock_786454159.jpeg",
+    id: 5,
+    image: "/images/real/trabajo5_consola_bellows.png",
+    category: "consolas",
+    title: "Fuelle de Cambios y Consola",
+    material: "Pranna Sintético Reforzado",
+  },
+  {
+    id: 6,
+    image: "/images/real/trabajo6_asientos_pick_up.png",
     category: "asientos",
     title: "Asientos Pick-Up Alta Resistencia",
     material: "Pranna Impermeable Gris",
@@ -82,7 +69,6 @@ export default function WorkGallery() {
       : GALLERY_ITEMS.filter((item) => item.category === filter);
 
   const openLightbox = (index) => {
-    // Find index in the filtered items array to allow correct slider controls in Lightbox
     setLightboxIndex(index);
   };
 
@@ -106,9 +92,14 @@ export default function WorkGallery() {
         <span className={styles.subtitle}>Portafolio Real</span>
         <h2 className={styles.title}>Nuestros Trabajos</h2>
         <p className={styles.description}>
-          Galería de autos reales tapizados en nuestro taller en Cajamarca. La calidad final de nuestras costuras y acabados habla por nosotros.
+          Galería de autos reales tapizados en nuestro taller en el Jr. Mariscal Cáceres 1031, Cajamarca. La calidad final de nuestras costuras habla por nosotros.
         </p>
       </div>
+
+      {/* Before & After Interactive Slider */}
+      <BeforeAfterSlider />
+
+      <div className={styles.sectionDivider} />
 
       {/* Filter Tabs */}
       <div className={styles.filterContainer}>
@@ -124,10 +115,10 @@ export default function WorkGallery() {
       </div>
 
       {/* Grid of Items */}
-      <motion.div layout className={styles.galleryGrid}>
-        <AnimatePresence mode="popLayout">
+      <framerMotion.div layout className={styles.galleryGrid}>
+        <FramerAnimatePresence mode="popLayout">
           {filteredItems.map((item, index) => (
-            <motion.div
+            <framerMotion.div
               key={item.id}
               layout
               initial={{ opacity: 0, scale: 0.9 }}
@@ -146,22 +137,22 @@ export default function WorkGallery() {
                 <h4 className={styles.itemTitle}>{item.title}</h4>
                 <p className={styles.itemMaterial}>{item.material}</p>
               </div>
-            </motion.div>
+            </framerMotion.div>
           ))}
-        </AnimatePresence>
-      </motion.div>
+        </FramerAnimatePresence>
+      </framerMotion.div>
 
       {/* Lightbox Modal */}
-      <AnimatePresence>
+      <FramerAnimatePresence>
         {lightboxIndex !== null && (
-          <motion.div
+          <framerMotion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className={styles.lightboxOverlay}
             onClick={closeLightbox}
           >
-            <motion.div
+            <framerMotion.div
               initial={{ scale: 0.95 }}
               animate={{ scale: 1 }}
               exit={{ scale: 0.95 }}
@@ -202,10 +193,10 @@ export default function WorkGallery() {
                   Línea: {filteredItems[lightboxIndex].material} ({filteredItems[lightboxIndex].category.toUpperCase()})
                 </p>
               </div>
-            </motion.div>
-          </motion.div>
+            </framerMotion.div>
+          </framerMotion.div>
         )}
-      </AnimatePresence>
+      </FramerAnimatePresence>
     </section>
   );
 }

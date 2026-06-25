@@ -19,8 +19,8 @@ const MATERIALS = [
     ],
     warranty: "2 Años de Garantía",
     gallery: [
-      { url: "/images/downloads/AdobeStock_2043987453.jpeg", label: "Tapizado en Pranna Negro", sub: "Acabado clásico de alta resistencia" },
-      { url: "/images/downloads/AdobeStock_786454159.jpeg", label: "Paneles y Asiento en Pranna", sub: "Combinación ideal para transporte" }
+      { url: "/images/real/trabajo5_consola_bellows.png", label: "Tapizado en Pranna Negro", sub: "Acabado clásico de alta resistencia" },
+      { url: "/images/real/trabajo6_asientos_pick_up.png", label: "Paneles y Asiento en Pranna", sub: "Combinación ideal para transporte" }
     ]
   },
   {
@@ -36,8 +36,8 @@ const MATERIALS = [
     ],
     warranty: "3 Años de Garantía",
     gallery: [
-      { url: "/images/downloads/AdobeStock_2040182756.jpeg", label: "Butacas Deportivas en Tacto Cuero", sub: "Costuras rojas deportivas reforzadas" },
-      { url: "/images/downloads/AdobeStock_1720048693.jpeg", label: "Tapizado Completo en Tacto Cuero", sub: "Renovación total de interiores" }
+      { url: "/images/real/trabajo2_asiento_accent.png", label: "Butacas Deportivas en Tacto Cuero", sub: "Costuras rojas deportivas reforzadas" },
+      { url: "/images/real/trabajo4_puerta_pranna.png", label: "Tapizado Completo en Tacto Cuero", sub: "Renovación total de interiores" }
     ]
   },
   {
@@ -53,8 +53,8 @@ const MATERIALS = [
     ],
     warranty: "4 Años de Garantía",
     gallery: [
-      { url: "/images/downloads/AdobeStock_1134428926.jpeg", label: "Interior Luxury en Cuero Americano", sub: "Detalle de costuras tipo rombo" },
-      { url: "/images/downloads/AdobeStock_2038520273.jpeg", label: "Asientos y Apoyabrazos Americano", sub: "Acabado mate de alta costura" }
+      { url: "/images/real/trabajo1_asiento_hilux.png", label: "Interior Luxury en Cuero Americano", sub: "Detalle de costuras tipo rombo" },
+      { url: "/images/real/trabajo2_asiento_accent.png", label: "Asientos y Apoyabrazos Americano", sub: "Acabado mate de alta costura" }
     ]
   },
   {
@@ -70,8 +70,8 @@ const MATERIALS = [
     ],
     warranty: "5 Años de Garantía Completa",
     gallery: [
-      { url: "/images/downloads/AdobeStock_1453597035_Editorial_Use_Only.jpeg", label: "Tapizado en Cuero Legítimo de Exportación", sub: "Costuras dobles y tacto premium" },
-      { url: "/images/downloads/AdobeStock_1740380285_Editorial_Use_Only.jpeg", label: "Detalles en Cuero Natural Cosido a Mano", sub: "Volante y palanca de cambios" }
+      { url: "/images/real/trabajo1_asiento_hilux.png", label: "Tapizado en Cuero Legítimo de Exportación", sub: "Costuras dobles y tacto premium" },
+      { url: "/images/real/trabajo3_volante_rio.png", label: "Detalles en Cuero Natural Cosido a Mano", sub: "Volante y palanca de cambios" }
     ]
   }
 ];

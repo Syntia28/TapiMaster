@@ -1,0 +1,405 @@
+.section {
+  padding: 100px 4%;
+  background-color: var(--bg-secondary);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Background glow grid decorative details */
+.section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(var(--border-light) 1px, transparent 1px);
+  background-size: 20px 20px;
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.subtitle {
+  color: var(--accent-red-hover);
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.title {
+  font-size: 2.8rem;
+  font-weight: 800;
+  margin-bottom: 16px;
+}
+
+.description {
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+}
+
+/* Layout Grid */
+.layoutGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: center;
+}
+
+/* Left Side: Seat Preview Canvas */
+.previewCanvas {
+  position: relative;
+  background: radial-gradient(circle at 50% 50%, #16161c 0%, #0c0c0e 100%);
+  border-radius: 24px;
+  border: 1px solid var(--border-light);
+  height: 580px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5);
+}
+
+/* Shadow underneath the seat inside preview */
+.previewCanvas::after {
+  content: '';
+  position: absolute;
+  bottom: 30px;
+  width: 180px;
+  height: 25px;
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0.8) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.bgGlow {
+  position: absolute;
+  inset: 0;
+  opacity: 0.45;
+  transition: background 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.seatSvg {
+  width: auto;
+  height: 82%;
+  max-width: 90%;
+  z-index: 2;
+  transition: var(--transition-smooth);
+}
+
+.visualSpecs {
+  position: absolute;
+  bottom: 25px;
+  left: 25px;
+  display: flex;
+  gap: 10px;
+  z-index: 10;
+}
+
+.specItem {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: rgba(16, 16, 20, 0.75);
+  border: 1px solid var(--border-light);
+  border-radius: 20px;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  backdrop-filter: blur(8px);
+  font-weight: 500;
+}
+
+.specIcon {
+  color: var(--accent-red-hover);
+}
+
+/* Right Side: Control Panel */
+.controlPanel {
+  display: flex;
+  flex-direction: column;
+}
+
+.panelBody {
+  padding: 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Dash stitched line outline in panel border */
+.panelBody::after {
+  content: '';
+  position: absolute;
+  inset: 6px;
+  border: 1px dashed var(--accent-red);
+  border-radius: 12px;
+  pointer-events: none;
+  opacity: 0.3;
+}
+
+.panelHeader {
+  margin-bottom: 30px;
+}
+
+.brandTitle {
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--accent-red-hover);
+  letter-spacing: 2px;
+  margin-bottom: 6px;
+}
+
+.panelTitle {
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.panelDesc {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.optionSection {
+  margin-bottom: 28px;
+  position: relative;
+  z-index: 2;
+}
+
+.sectionLabel {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+}
+
+/* Leather Selector Grid */
+.leatherGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.leatherCard {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 20px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-light);
+  border-radius: 10px;
+  text-align: left;
+  transition: var(--transition-smooth);
+}
+
+.leatherCard:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.leatherCardActive {
+  background: rgba(220, 38, 38, 0.04);
+  border-color: var(--accent-red);
+  box-shadow: 0 4px 15px rgba(220, 38, 38, 0.05);
+}
+
+.swatchWrapper {
+  position: relative;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.colorSwatch {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  box-shadow: inset 0 2px 5px rgba(0,0,0,0.5);
+}
+
+.swatchChecked {
+  position: absolute;
+  inset: -1px;
+  border-radius: 50%;
+  border: 2px solid var(--accent-red);
+}
+
+.leatherInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.leatherName {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.leatherType {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+/* Stitching Selector Row */
+.stitchRow {
+  display: flex;
+  gap: 12px;
+}
+
+.stitchBtn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  transition: var(--transition-smooth);
+  position: relative;
+}
+
+.stitchBtn:hover {
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text-primary);
+}
+
+.stitchBtnActive {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--stitch-color);
+  color: var(--text-primary);
+}
+
+.stitchColorDot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.stitchCheckedDot {
+  position: absolute;
+  top: -3px;
+  right: -3px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--stitch-color);
+  box-shadow: 0 0 5px var(--stitch-color);
+}
+
+.divider {
+  height: 1px;
+  background: var(--border-light);
+  margin: 20px 0;
+}
+
+/* Summary Card */
+.summaryCard {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin-bottom: 25px;
+  border-left: 3px solid var(--accent-red);
+}
+
+.summaryRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.sumLabel {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.sumValue {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.sumDesc {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.whatsappBtn {
+  width: 100%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px;
+  font-size: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .layoutGrid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .previewCanvas {
+    height: 480px;
+  }
+  .panelBody {
+    padding: 30px 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .title {
+    font-size: 2.1rem;
+  }
+  .previewCanvas {
+    height: 380px;
+  }
+  .stitchRow {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .panelTitle {
+    font-size: 1.5rem;
+  }
+}

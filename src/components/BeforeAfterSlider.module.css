@@ -1,0 +1,307 @@
+.container {
+  max-width: 1200px;
+  margin: 60px auto;
+  padding: 0 20px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.subtitle {
+  color: var(--accent-red-hover);
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.description {
+  color: var(--text-secondary);
+  max-width: 650px;
+  margin: 0 auto;
+  font-size: 1.05rem;
+}
+
+/* Tabs */
+.tabContainer {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.tabBtn {
+  padding: 10px 24px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-light);
+  border-radius: 30px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  transition: var(--transition-smooth);
+}
+
+.tabBtn:hover {
+  color: var(--text-primary);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.tabBtnActive {
+  background: var(--accent-red);
+  color: white;
+  border-color: var(--accent-red);
+  box-shadow: 0 4px 12px var(--accent-red-glow);
+}
+
+/* Main Grid */
+.mainGrid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 30px;
+  align-items: center;
+}
+
+/* Slider Wrapper */
+.sliderWrapper {
+  position: relative;
+  width: 100%;
+  height: 450px;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--border-light);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+  cursor: ew-resize;
+  user-select: none;
+  touch-action: none; /* disables browser scrolling when dragging */
+}
+
+/* Dash stitched outline on hover */
+.sliderWrapper::after {
+  content: '';
+  position: absolute;
+  inset: 8px;
+  border: 1px dashed var(--accent-red);
+  border-radius: 10px;
+  pointer-events: none;
+  opacity: 0.4;
+  z-index: 10;
+  transition: var(--transition-smooth);
+}
+
+.sliderWrapper:hover::after {
+  opacity: 0.8;
+}
+
+.sliderImg {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.imgAfter {
+  left: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+.imgBeforeWrapper {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.imgBefore {
+  left: 0;
+  z-index: 2;
+}
+
+/* Slider Line */
+.sliderLine {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--accent-red);
+  box-shadow: 0 0 10px var(--accent-red-glow);
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* Handle */
+.sliderHandle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--bg-secondary);
+  border: 2px solid var(--accent-red);
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  pointer-events: none;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.sliderWrapper:hover .sliderHandle {
+  transform: translate(-50%, -50%) scale(1.1);
+  background: var(--accent-red);
+  color: white;
+}
+
+.handleIcon {
+  flex-shrink: 0;
+}
+
+/* Badges */
+.badgeBefore,
+.badgeAfter {
+  position: absolute;
+  top: 20px;
+  padding: 6px 14px;
+  border-radius: 4px;
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  z-index: 5;
+  pointer-events: none;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.badgeBefore {
+  left: 20px;
+  background: rgba(16, 16, 20, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+.badgeAfter {
+  right: 20px;
+  background: var(--accent-red);
+  border: 1px solid var(--accent-red-hover);
+  color: #fff;
+}
+
+/* Info Card */
+.infoCard {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Red double-stitching effect in the card */
+.infoCard::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  border-left: 2px dashed var(--accent-red);
+  margin-left: 10px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  opacity: 0.6;
+}
+
+.carName {
+  color: var(--accent-red-hover);
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 10px;
+  padding-left: 15px;
+}
+
+.workTitle {
+  font-size: 1.6rem;
+  font-weight: 800;
+  margin-bottom: 15px;
+  line-height: 1.3;
+  padding-left: 15px;
+}
+
+.workDesc {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 25px;
+  padding-left: 15px;
+}
+
+.divider {
+  height: 1px;
+  background: var(--border-light);
+  margin-bottom: 20px;
+  margin-left: 15px;
+}
+
+.locationWrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  padding-left: 15px;
+}
+
+.locIcon {
+  color: var(--accent-red-hover);
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .mainGrid {
+    grid-template-columns: 1fr;
+  }
+  .sliderWrapper {
+    height: 380px;
+  }
+}
+
+@media (max-width: 576px) {
+  .title {
+    font-size: 1.8rem;
+  }
+  .sliderWrapper {
+    height: 280px;
+  }
+  .badgeBefore,
+  .badgeAfter {
+    top: 10px;
+    padding: 4px 10px;
+    font-size: 0.7rem;
+  }
+  .badgeBefore { left: 10px; }
+  .badgeAfter { right: 10px; }
+  .infoCard {
+    padding: 20px;
+  }
+}

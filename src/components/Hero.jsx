@@ -8,7 +8,7 @@ import styles from "./Hero.module.css";
 const SLIDES = [
   {
     id: 1,
-    image: "/images/downloads/AdobeStock_1453597035_Editorial_Use_Only.jpeg",
+    image: "/images/real/trabajo1_asiento_hilux.png",
     title: "DISEÑO Y CONFORT SIN LÍMITES",
     highlight: "TAPIMASTER",
     subtitle: "TAPICERÍA AUTOMOTRIZ DE ALTA COSTURA",
@@ -16,7 +16,7 @@ const SLIDES = [
   },
   {
     id: 2,
-    image: "/images/downloads/AdobeStock_1740380285_Editorial_Use_Only.jpeg",
+    image: "/images/real/trabajo3_volante_rio.png",
     title: "ACABADOS ARTESANALES DE LUJO",
     highlight: "DETALLES",
     subtitle: "EL ARTE DE LA COSTURA DE PRECISIÓN",
@@ -24,7 +24,7 @@ const SLIDES = [
   },
   {
     id: 3,
-    image: "/images/downloads/AdobeStock_2038520273.jpeg",
+    image: "/images/real/trabajo2_asiento_accent.png",
     title: "MATERIALES SELECCIONADOS PREMIUM",
     highlight: "GARANTÍA",
     subtitle: "DURABILIDAD Y ESTILO EN CAJAMARCA",
