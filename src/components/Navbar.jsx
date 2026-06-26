@@ -91,10 +91,10 @@ export default function Navbar() {
 
         {/* Actions Button */}
         <div className={styles.navActions}>
-          <a 
-            href="https://wa.me/51976543210?text=Hola%20TapiMaster,%20quiero%20cotizar%20el%20tapizado%20de%20mi%20veh%C3%ADculo." 
-            target="_blank" 
-            rel="noopener noreferrer" 
+          <a
+            href="https://wa.me/51992855239?text=Hola%20TapiMaster,%20quiero%20cotizar%20el%20tapizado%20de%20mi%20veh%C3%ADculo."
+            target="_blank"
+            rel="noopener noreferrer"
             className="btn-sporty stitching-border"
           >
             <MessageSquare size={16} />
@@ -103,7 +103,7 @@ export default function Navbar() {
         </div>
 
         {/* Hamburger Toggle */}
-        <button 
+        <button
           className={`${styles.menuToggle} ${isMenuOpen ? styles.menuToggleActive : ""}`}
           onClick={toggleMenu}
           aria-label="Abrir menú"
@@ -135,10 +135,10 @@ export default function Navbar() {
               </a>
             ))}
             <div className={styles.navActionsMobile}>
-              <a 
-                href="https://wa.me/51976543210?text=Hola%20TapiMaster,%20quiero%20cotizar%20el%20tapizado%20de%20mi%20veh%C3%ADculo." 
-                target="_blank" 
-                rel="noopener noreferrer" 
+              <a
+                href="https://wa.me/51976543210?text=Hola%20TapiMaster,%20quiero%20cotizar%20el%20tapizado%20de%20mi%20veh%C3%ADculo."
+                target="_blank"
+                rel="noopener noreferrer"
                 className="btn-sporty stitching-border"
                 onClick={() => setIsMenuOpen(false)}
               >
