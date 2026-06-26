@@ -42,18 +42,14 @@
 .overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(10, 10, 12, 0.4) 0%,
-    rgba(10, 10, 12, 0.75) 60%,
-    rgba(10, 10, 12, 0.98) 100%
-  ),
-  linear-gradient(
-    to right,
-    rgba(10, 10, 12, 0.8) 0%,
-    rgba(10, 10, 12, 0.4) 50%,
-    rgba(10, 10, 12, 0.8) 100%
-  );
+  background: linear-gradient(to bottom,
+      rgba(10, 10, 12, 0.4) 0%,
+      rgba(10, 10, 12, 0.75) 60%,
+      rgba(10, 10, 12, 0.98) 100%),
+    linear-gradient(to right,
+      rgba(10, 10, 12, 0.8) 0%,
+      rgba(10, 10, 12, 0.4) 50%,
+      rgba(10, 10, 12, 0.8) 100%);
   z-index: 2;
 }
 
@@ -79,7 +75,8 @@
   flex-direction: column;
   align-items: center;
   gap: 24px;
-  margin-top: 80px; /* offset for navbar */
+  margin-top: 80px;
+  /* offset for navbar */
 }
 
 .tagline {
@@ -193,31 +190,52 @@
 }
 
 @keyframes pulse {
-  0% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.3); opacity: 0.5; }
-  100% { transform: scale(1); opacity: 1; }
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.3);
+    opacity: 0.5;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 @keyframes kenBurns {
-  0% { transform: scale(1); }
-  100% { transform: scale(1.12); }
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(1.12);
+  }
 }
 
 @media (max-width: 768px) {
   .title {
     font-size: 2.5rem;
   }
+
   .description {
     font-size: 1.05rem;
   }
+
   .ctaGroup {
     flex-direction: column;
     width: 100%;
     gap: 12px;
   }
+
   .controls {
-    display: none; /* Hide buttons on mobile to simplify layout */
+    display: none;
+    /* Hide buttons on mobile to simplify layout */
   }
+
   .dots {
     left: 50%;
     transform: translateX(-50%);

@@ -1,4 +1,5 @@
 import { Outfit, Inter } from "next/font/google";
+import Script from "next/script";
 import Preloader from "@/components/Preloader";
 import CustomCursor from "@/components/CustomCursor";
 import "./globals.css";
@@ -37,6 +38,12 @@ export default function RootLayout({ children }) {
         <Preloader />
         <CustomCursor />
         {children}
+        {/* Widget de Accesibilidad UserWay – carga después del contenido principal */}
+        <Script
+          src="https://cdn.userway.org/widget.js"
+          data-account="au1j2fECe0"
+          strategy="lazyOnload"
+        />
       </body>
     </html>
   );
