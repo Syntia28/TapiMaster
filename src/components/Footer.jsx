@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import styles from "./Footer.module.css";
 import { motion } from "framer-motion";
 import { useRef } from "react";
@@ -145,9 +146,9 @@ export default function Footer() {
         <div className={styles.divider} />
 
         <div className={styles.bottom}>
-          <span className={styles.copy}>
-            © {new Date().getFullYear()} TapiMaster. Excelencia en cada costura.
-          </span>
+          <Link href="/derechos" className={styles.copyLink}>
+            © {new Date().getFullYear()} TapiMaster. Excelencia en cada costura. Todos los derechos reservados.
+          </Link>
 
           <motion.a
             href="https://wa.me/51992855239"
